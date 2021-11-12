@@ -64,3 +64,21 @@ def remove_pet_by_name(pet_shop, name):
             pet_shop["pets"].remove(pet)
 
 
+def add_pet_to_stock(pet_shop, new_pet):
+    pet_shop["pets"].append(new_pet)
+
+
+def get_customer_cash(customer_wallet):
+    return customer_wallet["cash"]
+
+
+def remove_customer_cash(customer_wallet, money_spent):
+    customer_wallet["cash"] -= money_spent
+
+
+def get_customer_pet_count(customer_pets):
+    return len(customer_pets["pets"])
+
+
+def add_pet_to_customer(customer, new_pet):
+    customer["pets"].append(new_pet)
