@@ -92,29 +92,30 @@ class TestPetShop(unittest.TestCase):
     # * This function does not need to return, it need to get cash back
     # * Get back cash test it just getting cash back updated value
     # Put a debugger to see
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_add_or_remove_cash__add(self):
         add_or_remove_cash(self.cc_pet_shop,10)
         cash = get_total_cash(self.cc_pet_shop)
         self.assertEqual(1010, cash)
 
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_add_or_remove_cash__remove(self):
         add_or_remove_cash(self.cc_pet_shop,-10)
         cash = get_total_cash(self.cc_pet_shop)
         self.assertEqual(990, cash)
 
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_pets_sold(self):
         sold = get_pets_sold(self.cc_pet_shop)
         self.assertEqual(0, sold)
 
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_increase_pets_sold(self):
         increase_pets_sold(self.cc_pet_shop,2)
         sold = get_pets_sold(self.cc_pet_shop)
         self.assertEqual(2, sold)
 
+##########################################################################
     @unittest.skip("delete this line to run the test")
     def test_stock_count(self):
         count = get_stock_count(self.cc_pet_shop)
