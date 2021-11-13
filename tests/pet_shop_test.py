@@ -89,9 +89,8 @@ class TestPetShop(unittest.TestCase):
         sum = get_total_cash(self.cc_pet_shop)
         self.assertEqual(1000, sum)
 
-    # * This function does not need to return, it need to get cash back
-    # * Get back cash test it just getting cash back updated value
-    # Put a debugger to see
+    # * This function does not need to return, it needs to get cash back
+    # * get_total_cash just gets back updated cash value
     # @unittest.skip("delete this line to run the test")
     def test_add_or_remove_cash__add(self):
         add_or_remove_cash(self.cc_pet_shop,10)
@@ -175,6 +174,7 @@ class TestPetShop(unittest.TestCase):
         self.assertEqual(1, get_customer_pet_count(customer))
 
 
+
     # --- OPTIONAL ---
 
     # @unittest.skip("delete this line to run the test")
@@ -196,17 +196,16 @@ class TestPetShop(unittest.TestCase):
         self.assertEqual(True, can_buy_pet)
 
 
-##########################################################################
+
     # These are 'integration' tests so we want multiple asserts.
     # If one fails the entire test should fail
     #
     # * Testing everything together
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_sell_pet_to_customer__pet_found(self):
         customer = self.customers[0]
         pet = find_pet_by_name(self.cc_pet_shop,"Arthur")
 
-        # * This function will be written above, reuse it
         sell_pet_to_customer(self.cc_pet_shop, pet, customer)
 
         self.assertEqual(1, get_customer_pet_count(customer))
@@ -214,6 +213,7 @@ class TestPetShop(unittest.TestCase):
         self.assertEqual(100, get_customer_cash(customer))
         self.assertEqual(1900, get_total_cash(self.cc_pet_shop))
 
+    #########################
     @unittest.skip("delete this line to run the test")
     def test_sell_pet_to_customer__pet_not_found(self):
         customer = self.customers[0]
@@ -226,7 +226,7 @@ class TestPetShop(unittest.TestCase):
         self.assertEqual(1000, get_customer_cash(customer))
         self.assertEqual(1000, get_total_cash(self.cc_pet_shop))
 
-    @unittest.skip("delete this line to run the test")
+    # @unittest.skip("delete this line to run the test")
     def test_sell_pet_to_customer__insufficient_funds(self):
         customer = self.customers[1]
         pet = find_pet_by_name(self.cc_pet_shop,"Arthur")

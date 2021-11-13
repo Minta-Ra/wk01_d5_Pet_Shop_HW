@@ -38,7 +38,6 @@ def get_stock_count(pet_shop):
     return len(pet_shop["pets"])
 
 
-##########################################################################
 # This function covers both, test_all_pets_by_breed__found and not_found from pet_shop.py
 def get_pets_by_breed(pet_shop, breed):
     # Empty list to store breeds
@@ -68,16 +67,16 @@ def add_pet_to_stock(pet_shop, new_pet):
     pet_shop["pets"].append(new_pet)
 
 
-def get_customer_cash(customer_wallet):
-    return customer_wallet["cash"]
+def get_customer_cash(customer):
+    return customer["cash"]
 
 
-def remove_customer_cash(customer_wallet, money_spent):
-    customer_wallet["cash"] -= money_spent
+def remove_customer_cash(customer, money_spent):
+    customer["cash"] -= money_spent
 
 
-def get_customer_pet_count(customer_pets):
-    return len(customer_pets["pets"])
+def get_customer_pet_count(customer):
+    return len(customer["pets"])
 
 
 def add_pet_to_customer(customer, new_pet):
@@ -89,9 +88,33 @@ def add_pet_to_customer(customer, new_pet):
 
 # This function covers 3 test functions:
 # test_customer_can_afford_pet__sufficient_funds, insufficient_funds and exact_funds from pet_shop.py
-def customer_can_afford_pet(customer_wallet, new_pet_price):
-    if customer_wallet["cash"] - new_pet_price["price"] >= 0:
+def customer_can_afford_pet(customer, new_pet):
+    if customer["cash"] - new_pet["price"] >= 0:
         return True
     # If customer cannot afford to buy a pet
     else:
         return False
+
+
+
+# These are 'integration' tests
+
+def sell_pet_to_customer(pet_shop, pet, customer):
+    # pdb.set_trace()
+
+    # Check if pet's name exist
+    # if find_pet_by_name(pet_shop, pet["name"]) != None:
+    
+        # Check if customer can afford pet - Yes / No
+        if customer_can_afford_pet(customer, pet):
+            # Remove money from customer
+            remove_customer_cash(customer, pet["price"])
+            # Add money of pet's price to the shop
+            add_or_remove_cash(pet_shop, pet["price"])
+            # Give customer a pet
+            add_pet_to_customer(customer, pet)
+            # Num of pets sold by the shop
+            increase_pets_sold(pet_shop, 1)
+            # Remove pet from the shop
+            remove_pet_by_name(pet_shop, pet["name"])
+            
