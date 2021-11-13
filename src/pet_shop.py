@@ -82,3 +82,16 @@ def get_customer_pet_count(customer_pets):
 
 def add_pet_to_customer(customer, new_pet):
     customer["pets"].append(new_pet)
+
+
+
+# --- OPTIONAL ---
+
+# This function covers 3 test functions:
+# test_customer_can_afford_pet__sufficient_funds, insufficient_funds and exact_funds from pet_shop.py
+def customer_can_afford_pet(customer_wallet, new_pet_price):
+    if customer_wallet["cash"] - new_pet_price["price"] >= 0:
+        return True
+    # If customer cannot afford to buy a pet
+    else:
+        return False
